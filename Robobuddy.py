@@ -43,7 +43,7 @@ def takeCommand():
         print(f"You said: {query}")
     except Exception:
         speak("I didn't catch that. Could you please repeat?")
-        return "None"
+        return "none"
     return query.lower()
 
 def getWeather():
@@ -135,86 +135,86 @@ def openApp(app_name):
 # ---------- Main Assistant ----------
 if __name__ == "__main__":
     wishMe()
-    while True:
-        query = takeCommand()
+    query = takeCommand()
 
-        if "wikipedia" in query:
-            speak("Searching Wikipedia...")
-            query = query.replace("wikipedia", "")
-            try:
-                result = wikipedia.summary(query, sentences=2)
-                speak("According to Wikipedia:")
-                speak(result)
-            except:
-                speak("Couldn't find any results.")
+    if 'wikipedia' in query:
+        speak("Searching Wikipedia...")
+        query = query.replace("wikipedia", "")
+        try:
+            result = wikipedia.summary(query, sentences=2)
+            speak("According to Wikipedia:")
+            speak(result)
+        except:
+            speak("Couldn't find any results.")
 
-        elif "youtube" in query:
-            webbrowser.open("https://www.youtube.com")
+    elif "youtube" in query:
+        webbrowser.open("https://www.youtube.com")
+        speak("Opening YouTube.")
 
-        elif "google" in query:
-            webbrowser.open("https://www.google.com")
+    elif "google" in query:
+        webbrowser.open("https://www.google.com")
+        speak("Opening Google.")
 
-        elif "stack overflow" in query:
-            webbrowser.open("https://stackoverflow.com")
+    elif "stack overflow" in query:
+        webbrowser.open("https://stackoverflow.com")
+        speak("Opening Stack Overflow.")
 
-        elif "play song" in query or "play music" in query:
-            speak("Which song would you like to hear?")
-            song = takeCommand()
-            pywhatkit.playonyt(song)
+    elif "play song" in query or "play music" in query:
+        speak("Which song would you like to hear?")
+        song = takeCommand()
+        pywhatkit.playonyt(song)
 
-        elif "search" in query:
-            speak("What should I search?")
-            search = takeCommand()
-            pywhatkit.search(search)
+    elif "search" in query:
+        speak("What should I search?")
+        search = takeCommand()
+        pywhatkit.search(search)
 
-        elif "weather" in query:
-            getWeather()
+    elif "weather" in query:
+        getWeather()
 
-        elif "set alarm" in query:
-            setAlarm()
+    elif "set alarm" in query:
+        setAlarm()
 
-        elif "time" in query:
-            current_time = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"The time is {current_time}")
+    elif "time" in query:
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        speak(f"The time is {current_time}")
 
-        elif "date" in query or "day" in query:
-            today = datetime.datetime.now().strftime("%A, %d %B %Y")
-            speak(f"Today is {today}")
+    elif "date" in query or "day" in query:
+        today = datetime.datetime.now().strftime("%A, %d %B %Y")
+        speak(f"Today is {today}")
 
-        elif "email" in query:
-            sendEmail()
+    elif "email" in query:
+        sendEmail()
 
-        elif "joke" in query:
-            joke = pyjokes.get_joke()
-            speak(joke)
+    elif "joke" in query:
+        joke = pyjokes.get_joke()
+        speak(joke)
 
-        elif "nearby hospital" in query:
-            searchNearby("hospitals")
+    elif "nearby hospital" in query:
+        searchNearby("hospitals")
 
-        elif "nearby restaurant" in query:
-            searchNearby("restaurants")
+    elif "nearby restaurant" in query:
+        searchNearby("restaurants")
 
-        elif "nearby atm" in query:
-            searchNearby("atm")
+    elif "nearby atm" in query:
+        searchNearby("atm")
 
-        elif "open spotify" in query:
-            openApp("spotify")
+    elif "open spotify" in query:
+        openApp("spotify")
 
-        elif "open netflix" in query:
-            openApp("netflix")
+    elif "open netflix" in query:
+        openApp("netflix")
 
-        elif "open chrome" in query:
-            openApp("chrome")
+    elif "open chrome" in query:
+        openApp("chrome")
 
-        elif "open code" in query:
-            openApp("code")
+    elif "open code" in query:
+        openApp("code")
 
-        elif "open notepad" in query:
-            openApp("notepad")
+    elif "open notepad" in query:
+        openApp("notepad")
 
-        elif "exit" in query or "quit" in query or "stop" in query:
-            speak("Goodbye! Robobuddy signing off.")
-            break
+    else:
+        speak("Sorry, I couldn't understand that.")
 
-        else:
-            speak("I'm not sure how to do that. Can you try again?")
+    speak("Task completed. Robobuddy signing off.")
