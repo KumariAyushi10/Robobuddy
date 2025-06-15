@@ -5,6 +5,7 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
+import pyaudio
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
